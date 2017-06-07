@@ -8,9 +8,10 @@ using NutritionSite.Models;
 namespace NutritionSite.Migrations
 {
     [DbContext(typeof(NutritionSiteContext))]
-    partial class NutritionSiteContextModelSnapshot : ModelSnapshot
+    [Migration("20170607155556_DataModel")]
+    partial class DataModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "1.1.2")

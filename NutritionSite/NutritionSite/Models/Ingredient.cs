@@ -9,6 +9,11 @@ namespace NutritionSite.Models
     {
         public int ID { set; get; }
         public int FoodID { set; get; }
+        
         public int Amount { set; get; }
+        public int DailyNutritionID { set; get; }
+
+        public Food Food { get; set; }
+        public DailyNutrition DailyNutrition { get; set; }
     }
 }

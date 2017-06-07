@@ -73,7 +73,7 @@ namespace NutritionSite.Models
                      },
                      new Food
                      {
-                         Name = "Protein Powder",
+                         Name = "Protein Scoop",
                          ServingSize = 1,
                          ServingSizeType = "item",
                          Calories = 120,
@@ -129,31 +129,54 @@ namespace NutritionSite.Models
                 context.SaveChanges();
 
 
+                
+
+                var dailies = new DailyNutrition[]
+                {
+                    new DailyNutrition
+                    {
+                        Name = "Monday"
+
+                    }
+
+                };
+
+                foreach (DailyNutrition dn in dailies)
+                {
+                    context.DailyNutrition.Add(dn);
+                }
+
+                context.SaveChanges();
 
                 var ingredients = new Ingredient[]
                 {
                     new Ingredient
                     {
                         FoodID = foods.Single(f => f.Name == "Eggs").ID,
-                        Amount = 4
+                        Amount = 4,
+                        DailyNutritionID = dailies.Single(f => f.Name == "Monday").ID
+
                     },
 
                     new Ingredient
                     {
                         FoodID = foods.Single(f => f.Name == "Chicken").ID,
-                        Amount = 400
+                        Amount = 400,
+                        DailyNutritionID = dailies.Single(f => f.Name == "Monday").ID
                     },
 
                     new Ingredient
                     {
-                        FoodID = foods.Single(f => f.Name == "Whole Milk").ID,
-                        Amount = 500
+                        FoodID = foods.Single(f => f.Name == "Whole milk").ID,
+                        Amount = 500,
+                        DailyNutritionID = dailies.Single(f => f.Name == "Monday").ID
                     },
 
                     new Ingredient
                     {
-                        FoodID = foods.Single(f => f.Name == "Chicken").ID,
-                        Amount = 400
+                        FoodID = foods.Single(f => f.Name == "Protein Scoop").ID,
+                        Amount = 2,
+                        DailyNutritionID = dailies.Single(f => f.Name == "Monday").ID
                     }
                 };
 
@@ -163,21 +186,7 @@ namespace NutritionSite.Models
                 }
                 context.SaveChanges();
 
-                var dailies = new DailyNutrition[]
-                {
-                    new DailyNutrition
-                    {
-                        FoodID = foods.Single(f => f.Name == "Eggs").ID,
-                        Amount = 4
-                    },
 
-                };
-
-                foreach (Ingredient i in ingredients)
-                {
-                    context.Ingredient.Add(i);
-                }
-                context.SaveChanges();
 
             }
         }
